@@ -1,0 +1,4 @@
+interface:
+  display_name: "cut-frontend-slop"
+  short_description: "Audit frontend assumptions, waste, and weak safeguards"
+  default_prompt: "Use $cut-frontend-slop to audit this frontend and prioritize concrete fixes."

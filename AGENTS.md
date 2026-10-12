@@ -6,3 +6,7 @@ This repository is maintained by Prashant Singhal as a public collection of reus
 - Keep planned skill files empty until their content is approved for development.
 - The planned topics in the README do not authorize drafting their instructions.
 - Do not publish to npm unless the owner explicitly requests it.
+
+## Command routing
+
+When the user invokes `/cut-frontend-slop`, read and apply `skills/cut-frontend-slop/SKILL.md`. Treat any text following the command as the requested scope and mode.
