@@ -1,6 +1,9 @@
 ---
 name: strengthen-test-behavior
 description: Find tests that pass without detecting broken behavior and use targeted mutation analysis. Use when this specific concern is requested in a frontend project, especially TypeScript and React.
+license: MIT
+metadata:
+  author: Prashant Singhal
 ---
 
 # Strengthen test behavior
@@ -16,7 +19,3 @@ Inspect assertions for observable outcomes, meaningful arguments, boundary condi
 ## Verification and output
 
 For findings, provide a file location, evidence, concrete risk, and the smallest useful fix. Separate observed defects from tooling suggestions. After changes, run relevant existing checks and add behavioral tests for meaningful fixes; state failures and anything unverified. Avoid blanket rewrites or suppressions to make checks green. Match effort to project lifetime and defect consequences. Verify current official tool documentation before adding a dependency.
-
-## Provenance
-
-Adapted from the user-provided frontend quality writeup beginning “Ten thousand lines of code in a week used to mean a team.” The source author and public URL were not supplied.

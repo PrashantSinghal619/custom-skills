@@ -1,4 +1,0 @@
-interface:
-  display_name: "strengthen-test-behavior"
-  short_description: "Strengthen test behavior in frontend projects"
-  default_prompt: "Use $strengthen-test-behavior to review this concern in the requested frontend scope."

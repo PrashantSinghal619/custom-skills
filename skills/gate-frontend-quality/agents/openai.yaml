@@ -1,4 +1,0 @@
-interface:
-  display_name: "gate-frontend-quality"
-  short_description: "Gate frontend quality in frontend projects"
-  default_prompt: "Use $gate-frontend-quality to review this concern in the requested frontend scope."

@@ -4,34 +4,66 @@ A growing collection of reusable AI skills by [Prashant Singhal](https://github.
 
 ## Available skills
 
-Use `/cut-frontend-slop` to run the full frontend quality set, or choose an individual concern below. With no mode specified, each invocation starts with an audit; add a scope and `review`, `cleanup`, or a tooling request to guide the work.
+Install `cut-frontend-slop` to run the full frontend quality set, or choose an individual concern below. With no mode specified, each invocation starts with an audit; add a scope and `review`, `cleanup`, or a tooling request to guide the work.
 
-| Command | Purpose |
+| Skill | Purpose |
 | --- | --- |
-| [/cut-frontend-slop](skills/cut-frontend-slop/SKILL.md) | Coordinate all ten concerns and consolidate findings |
-| [/verify-api-contracts](skills/verify-api-contracts/SKILL.md) | Verify API contracts |
-| [/tighten-typescript](skills/tighten-typescript/SKILL.md) | Tighten TypeScript |
-| [/lint-frontend-behavior](skills/lint-frontend-behavior/SKILL.md) | Lint frontend behavior |
-| [/enforce-layer-boundaries](skills/enforce-layer-boundaries/SKILL.md) | Enforce layer boundaries |
-| [/codify-recurring-bugs](skills/codify-recurring-bugs/SKILL.md) | Codify recurring bugs |
-| [/guide-frontend-agents](skills/guide-frontend-agents/SKILL.md) | Guide frontend agents |
-| [/strengthen-test-behavior](skills/strengthen-test-behavior/SKILL.md) | Strengthen test behavior |
-| [/prune-dead-code](skills/prune-dead-code/SKILL.md) | Prune dead code |
-| [/deduplicate-business-logic](skills/deduplicate-business-logic/SKILL.md) | Deduplicate business logic |
-| [/gate-frontend-quality](skills/gate-frontend-quality/SKILL.md) | Gate frontend quality |
+| [cut-frontend-slop](skills/cut-frontend-slop/SKILL.md) | Coordinate all ten concerns and consolidate findings |
+| [verify-api-contracts](skills/verify-api-contracts/SKILL.md) | Verify API contracts |
+| [tighten-typescript](skills/tighten-typescript/SKILL.md) | Tighten TypeScript |
+| [lint-frontend-behavior](skills/lint-frontend-behavior/SKILL.md) | Lint frontend behavior |
+| [enforce-layer-boundaries](skills/enforce-layer-boundaries/SKILL.md) | Enforce layer boundaries |
+| [codify-recurring-bugs](skills/codify-recurring-bugs/SKILL.md) | Codify recurring bugs |
+| [guide-frontend-agents](skills/guide-frontend-agents/SKILL.md) | Guide frontend agents |
+| [strengthen-test-behavior](skills/strengthen-test-behavior/SKILL.md) | Strengthen test behavior |
+| [prune-dead-code](skills/prune-dead-code/SKILL.md) | Prune dead code |
+| [deduplicate-business-logic](skills/deduplicate-business-logic/SKILL.md) | Deduplicate business logic |
+| [gate-frontend-quality](skills/gate-frontend-quality/SKILL.md) | Gate frontend quality |
 
-Slash commands work in clients that support skill slash invocation. This repository also routes these literal requests through `AGENTS.md`. Codex supports explicit `$skill-name` invocation after installation; command-menu behavior depends on the client.
+## Structure and installation
 
-For Codex, copy all eleven populated skill folders from `skills/` into `~/.agents/skills/`, or into `.agents/skills/` in a target project. Keep them as siblings so the coordinator can resolve its dependencies. For an individual concern, install just that skill; it is self-contained. Leave the empty planned placeholders uninstalled. Reload skills or restart the session if needed. See the [official skill documentation](https://learn.chatgpt.com/docs/build-skills).
+This collection follows the [Agent Skills specification](https://agentskills.io/specification), used by the [skills CLI](https://github.com/vercel-labs/skills). Each skill has YAML frontmatter (`name` and `description`) followed by agent instructions in `SKILL.md`. Supporting instructions live in `references/` only where needed. The coordinator bundles all ten concerns and can be installed alone; every individual skill is self-contained.
+
+```text
+skills/
+  cut-frontend-slop/
+    SKILL.md
+    references/
+      verify-api-contracts.md
+      ...
+  verify-api-contracts/
+    SKILL.md
+  ...
+planned/
+  humanize-copy/SKILL.md
+  project-grill/SKILL.md
+```
+
+List the available skills:
+
+```sh
+npx skills add PrashantSinghal619/custom-skills --list
+```
+
+Install the full workflow, or one concern:
+
+```sh
+npx skills add PrashantSinghal619/custom-skills --skill cut-frontend-slop
+npx skills add PrashantSinghal619/custom-skills --skill verify-api-contracts
+```
+
+Invocation is provided by the receiving agent. Use `/cut-frontend-slop` where skill slash commands are supported, or the client's equivalent skill invocation. The Agent Skills format itself does not register slash commands.
 
 ## Planned skills
 
-- `skills/humanize-copy/SKILL.md` — Humanize AI copywriting.
-- `skills/project-grill/SKILL.md` — Test project knowledge, brainstorm use cases and edge cases, clarify direction, and identify gaps.
+- `planned/humanize-copy/SKILL.md` — Humanize AI copywriting.
+- `planned/project-grill/SKILL.md` — Test project knowledge, brainstorm use cases and edge cases, clarify direction, and identify gaps.
 
 The planned skill files are intentionally empty and are not usable skills yet. Additional skill content will be added only with the owner's explicit approval.
 
-Distribution through npm skills is planned. Nothing has been published to npm yet.
+The GitHub collection is compatible with the npm-distributed `skills` CLI. This repository has not been published as a separate npm package.
+
+See [SOURCES.md](SOURCES.md) for the provenance of the frontend guidance.
 
 ## Reuse and credit
 

@@ -1,6 +1,9 @@
 ---
 name: cut-frontend-slop
 description: Audit and reduce maintenance risks in frontend codebases, especially TypeScript and React, including guessed API shapes, unnecessary effects, architectural drift, weak tests, dead code, and duplicate logic. Use for frontend slop reviews, targeted cleanup, or gradual quality-check rollout; not visual redesign or copywriting.
+license: MIT
+metadata:
+  author: Prashant Singhal
 ---
 
 # Cut frontend slop
@@ -15,22 +18,22 @@ Follow the requested mode: a review produces findings; a cleanup implements scop
 
 ## Run the set
 
-This is the coordinator for ten independently reusable skills. Apply all ten concerns to the requested frontend scope. Inspect project context once, then read each linked skill and perform its relevant checks in the order below. Carry the same requested mode and scope through every skill; do not silently turn an audit into implementation. Run sequentially in the current session; separate agents are not required.
+Apply ten frontend quality concerns using the bundled references. Each concern is also available as an independently installable skill in this collection. Apply all ten concerns to the requested frontend scope. Inspect project context once, then read each linked reference and perform its relevant checks in the order below. Carry the same requested mode and scope through every skill; do not silently turn an audit into implementation. Run sequentially in the current session; separate agents are not required.
 
-The coordinator and these skill folders must be installed together as siblings. Resolve links relative to this file, not the target project's working directory. If a dependency is missing, report which concern could not run rather than claiming a complete audit.
+All instructions required by this coordinator are bundled in `references/`. Resolve links relative to this skill directory. No sibling skill installation or custom command router is required.
 
-| Individual command | Concern | Instructions |
+| Standalone skill | Concern | Instructions |
 | --- | --- | --- |
-| `/verify-api-contracts` | Verify API contracts | [verify-api-contracts](../verify-api-contracts/SKILL.md) |
-| `/tighten-typescript` | Tighten TypeScript | [tighten-typescript](../tighten-typescript/SKILL.md) |
-| `/lint-frontend-behavior` | Lint frontend behavior | [lint-frontend-behavior](../lint-frontend-behavior/SKILL.md) |
-| `/enforce-layer-boundaries` | Enforce layer boundaries | [enforce-layer-boundaries](../enforce-layer-boundaries/SKILL.md) |
-| `/codify-recurring-bugs` | Codify recurring bugs | [codify-recurring-bugs](../codify-recurring-bugs/SKILL.md) |
-| `/guide-frontend-agents` | Guide frontend agents | [guide-frontend-agents](../guide-frontend-agents/SKILL.md) |
-| `/strengthen-test-behavior` | Strengthen test behavior | [strengthen-test-behavior](../strengthen-test-behavior/SKILL.md) |
-| `/prune-dead-code` | Prune dead code | [prune-dead-code](../prune-dead-code/SKILL.md) |
-| `/deduplicate-business-logic` | Deduplicate business logic | [deduplicate-business-logic](../deduplicate-business-logic/SKILL.md) |
-| `/gate-frontend-quality` | Gate frontend quality | [gate-frontend-quality](../gate-frontend-quality/SKILL.md) |
+| `verify-api-contracts` | Verify API contracts | [verify-api-contracts](references/verify-api-contracts.md) |
+| `tighten-typescript` | Tighten TypeScript | [tighten-typescript](references/tighten-typescript.md) |
+| `lint-frontend-behavior` | Lint frontend behavior | [lint-frontend-behavior](references/lint-frontend-behavior.md) |
+| `enforce-layer-boundaries` | Enforce layer boundaries | [enforce-layer-boundaries](references/enforce-layer-boundaries.md) |
+| `codify-recurring-bugs` | Codify recurring bugs | [codify-recurring-bugs](references/codify-recurring-bugs.md) |
+| `guide-frontend-agents` | Guide frontend agents | [guide-frontend-agents](references/guide-frontend-agents.md) |
+| `strengthen-test-behavior` | Strengthen test behavior | [strengthen-test-behavior](references/strengthen-test-behavior.md) |
+| `prune-dead-code` | Prune dead code | [prune-dead-code](references/prune-dead-code.md) |
+| `deduplicate-business-logic` | Deduplicate business logic | [deduplicate-business-logic](references/deduplicate-business-logic.md) |
+| `gate-frontend-quality` | Gate frontend quality | [gate-frontend-quality](references/gate-frontend-quality.md) |
 
 Skip only concerns that do not apply to the target stack or scope, and explain those exclusions. Deduplicate overlapping findings and recommendations. Prefer a trustworthy API contract, meaningful behavioral tests, and enforcement of adopted checks when resources are limited. Do not install every example tool.
 
@@ -45,7 +48,3 @@ Review disables, ignores, and stale rules periodically. Explain why each rule ex
 Run the relevant existing checks after changes and add behavioral tests for meaningful fixes. State what ran, what failed, and what remains unverified. For each actionable finding, give a file location, concrete risk or behavior, evidence, and the smallest useful fix; separate observed defects from tooling suggestions. Summarize applied changes and remaining decisions.
 
 Human review still owns feature correctness, state placement, premature abstractions, and competing implementations of the same idea. A green suite proves only that its checks found no targeted failures; it does not prove understanding or product correctness.
-
-## Provenance
-
-Condensed and adapted from the user-provided writeup beginning “Ten thousand lines of code in a week used to mean a team.” The source author and public URL were not supplied. Tool names are examples from that writeup; verify current compatibility against official documentation before adding them to a project.

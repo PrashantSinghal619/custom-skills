@@ -1,4 +1,0 @@
-interface:
-  display_name: "tighten-typescript"
-  short_description: "Tighten TypeScript in frontend projects"
-  default_prompt: "Use $tighten-typescript to review this concern in the requested frontend scope."

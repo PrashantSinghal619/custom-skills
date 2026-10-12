@@ -1,4 +1,0 @@
-interface:
-  display_name: "prune-dead-code"
-  short_description: "Prune dead code in frontend projects"
-  default_prompt: "Use $prune-dead-code to review this concern in the requested frontend scope."
