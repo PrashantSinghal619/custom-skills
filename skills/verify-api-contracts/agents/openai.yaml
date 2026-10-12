@@ -1,0 +1,4 @@
+interface:
+  display_name: "verify-api-contracts"
+  short_description: "Verify API contracts in frontend projects"
+  default_prompt: "Use $verify-api-contracts to review this concern in the requested frontend scope."

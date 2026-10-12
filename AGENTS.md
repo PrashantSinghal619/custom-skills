@@ -9,4 +9,16 @@ This repository is maintained by Prashant Singhal as a public collection of reus
 
 ## Command routing
 
-When the user invokes `/cut-frontend-slop`, read and apply `skills/cut-frontend-slop/SKILL.md`. Treat any text following the command as the requested scope and mode.
+For the commands below, read and apply the corresponding skill. Treat text after the command as the requested scope and mode. `/cut-frontend-slop` coordinates the full set; individual commands apply only their own concern.
+
+- `/cut-frontend-slop`: `skills/cut-frontend-slop/SKILL.md`
+- `/verify-api-contracts`: `skills/verify-api-contracts/SKILL.md`
+- `/tighten-typescript`: `skills/tighten-typescript/SKILL.md`
+- `/lint-frontend-behavior`: `skills/lint-frontend-behavior/SKILL.md`
+- `/enforce-layer-boundaries`: `skills/enforce-layer-boundaries/SKILL.md`
+- `/codify-recurring-bugs`: `skills/codify-recurring-bugs/SKILL.md`
+- `/guide-frontend-agents`: `skills/guide-frontend-agents/SKILL.md`
+- `/strengthen-test-behavior`: `skills/strengthen-test-behavior/SKILL.md`
+- `/prune-dead-code`: `skills/prune-dead-code/SKILL.md`
+- `/deduplicate-business-logic`: `skills/deduplicate-business-logic/SKILL.md`
+- `/gate-frontend-quality`: `skills/gate-frontend-quality/SKILL.md`

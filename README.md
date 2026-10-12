@@ -4,11 +4,25 @@ A growing collection of reusable AI skills by [Prashant Singhal](https://github.
 
 ## Available skills
 
-- [cut-frontend-slop](skills/cut-frontend-slop/SKILL.md) — Audit frontend assumptions, architectural drift, weak tests, dead code, and duplicate logic; roll out useful safeguards gradually.
+Use `/cut-frontend-slop` to run the full frontend quality set, or choose an individual concern below. With no mode specified, each invocation starts with an audit; add a scope and `review`, `cleanup`, or a tooling request to guide the work.
 
-Invoke `/cut-frontend-slop` in an agent that supports skill slash commands. This repository also routes that literal request through `AGENTS.md`. Codex supports explicit invocation as `$cut-frontend-slop` after installation; command-menu behavior depends on the client.
+| Command | Purpose |
+| --- | --- |
+| [/cut-frontend-slop](skills/cut-frontend-slop/SKILL.md) | Coordinate all ten concerns and consolidate findings |
+| [/verify-api-contracts](skills/verify-api-contracts/SKILL.md) | Verify API contracts |
+| [/tighten-typescript](skills/tighten-typescript/SKILL.md) | Tighten TypeScript |
+| [/lint-frontend-behavior](skills/lint-frontend-behavior/SKILL.md) | Lint frontend behavior |
+| [/enforce-layer-boundaries](skills/enforce-layer-boundaries/SKILL.md) | Enforce layer boundaries |
+| [/codify-recurring-bugs](skills/codify-recurring-bugs/SKILL.md) | Codify recurring bugs |
+| [/guide-frontend-agents](skills/guide-frontend-agents/SKILL.md) | Guide frontend agents |
+| [/strengthen-test-behavior](skills/strengthen-test-behavior/SKILL.md) | Strengthen test behavior |
+| [/prune-dead-code](skills/prune-dead-code/SKILL.md) | Prune dead code |
+| [/deduplicate-business-logic](skills/deduplicate-business-logic/SKILL.md) | Deduplicate business logic |
+| [/gate-frontend-quality](skills/gate-frontend-quality/SKILL.md) | Gate frontend quality |
 
-For Codex, copy `skills/cut-frontend-slop` into your user-level `~/.agents/skills/` directory, or into `.agents/skills/` in a target project. Reload skills or restart the session if needed. See the [official skill documentation](https://learn.chatgpt.com/docs/build-skills).
+Slash commands work in clients that support skill slash invocation. This repository also routes these literal requests through `AGENTS.md`. Codex supports explicit `$skill-name` invocation after installation; command-menu behavior depends on the client.
+
+For Codex, copy all eleven populated skill folders from `skills/` into `~/.agents/skills/`, or into `.agents/skills/` in a target project. Keep them as siblings so the coordinator can resolve its dependencies. For an individual concern, install just that skill; it is self-contained. Leave the empty planned placeholders uninstalled. Reload skills or restart the session if needed. See the [official skill documentation](https://learn.chatgpt.com/docs/build-skills).
 
 ## Planned skills
 

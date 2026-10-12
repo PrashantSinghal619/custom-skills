@@ -7,33 +7,32 @@ description: Audit and reduce maintenance risks in frontend codebases, especiall
 
 Make frontend code safer to trust and cheaper to review. Prevent unsupported assumptions, find accumulated waste, and enforce checks that catch real defects. Apply the categories to the project's stack; TypeScript and React are the primary context.
 
-## Establish scope
+## Establish scope once
 
 Read project instructions, package scripts, compiler and lint configuration, API contracts, tests, and CI. Inspect the requested files or diff first; for a general invocation, audit representative entry points and important data flows. Search for existing helpers before introducing replacements.
 
 Follow the requested mode: a review produces findings; a cleanup implements scoped fixes; a tooling request adds appropriate safeguards. If no mode is given, start with an audit and prioritized recommendations. Keep behavior and the project's architecture intact unless the requested fix requires a change. Do not install the entire tool list or rewrite the repository to satisfy it.
 
-## Ten checks
+## Run the set
 
-1. **API contracts.** Prefer an authoritative, current OpenAPI specification and generated types/client/runtime schemas over independently handwritten response shapes. Hey API and Zod are examples, not dependencies required by this skill. Validate untrusted responses at runtime; compile-time types cannot establish their actual shape. Regenerate clients rather than editing generated files. If no trustworthy contract exists, report the gap and inspect actual responses or backend definitions; never invent fields or a supposedly authoritative spec.
+This is the coordinator for ten independently reusable skills. Apply all ten concerns to the requested frontend scope. Inspect project context once, then read each linked skill and perform its relevant checks in the order below. Carry the same requested mode and scope through every skill; do not silently turn an audit into implementation. Run sequentially in the current session; separate agents are not required.
 
-2. **Type assumptions.** Assess `strict`, `noUncheckedIndexedAccess`, and `exactOptionalPropertyTypes`. Handle absent array entries and optional values explicitly. Replace unjustified `any`, non-null assertions, and casts that hide uncertainty with accurate types or checks. Introduce compiler changes gradually when the existing backlog is large.
+The coordinator and these skill folders must be installed together as siblings. Resolve links relative to this file, not the target project's working directory. If a dependency is missing, report which concern could not run rather than claiming a complete audit.
 
-3. **Lint as a behavior filter.** Use existing tooling to find excessive complexity, identical branches, accidental nested control flow, and suspicious duplication. In React, remove effects used only to derive values or synchronize redundant state; retain effects that synchronize with external systems. Check assertion-free tests, focused tests, missing awaits in end-to-end assertions, and accessible markup. Relevant examples include SonarJS, effect-focused React linting, Vitest and Playwright ESLint plugins, and jsx-a11y. Respect existing conventions for exported return types, type definitions, filenames, and import aliases rather than imposing style rules as universal defect fixes. Complement static accessibility checks with rendered or composed UI checks when applicable.
+| Individual command | Concern | Instructions |
+| --- | --- | --- |
+| `/verify-api-contracts` | Verify API contracts | [verify-api-contracts](../verify-api-contracts/SKILL.md) |
+| `/tighten-typescript` | Tighten TypeScript | [tighten-typescript](../tighten-typescript/SKILL.md) |
+| `/lint-frontend-behavior` | Lint frontend behavior | [lint-frontend-behavior](../lint-frontend-behavior/SKILL.md) |
+| `/enforce-layer-boundaries` | Enforce layer boundaries | [enforce-layer-boundaries](../enforce-layer-boundaries/SKILL.md) |
+| `/codify-recurring-bugs` | Codify recurring bugs | [codify-recurring-bugs](../codify-recurring-bugs/SKILL.md) |
+| `/guide-frontend-agents` | Guide frontend agents | [guide-frontend-agents](../guide-frontend-agents/SKILL.md) |
+| `/strengthen-test-behavior` | Strengthen test behavior | [strengthen-test-behavior](../strengthen-test-behavior/SKILL.md) |
+| `/prune-dead-code` | Prune dead code | [prune-dead-code](../prune-dead-code/SKILL.md) |
+| `/deduplicate-business-logic` | Deduplicate business logic | [deduplicate-business-logic](../deduplicate-business-logic/SKILL.md) |
+| `/gate-frontend-quality` | Gate frontend quality | [gate-frontend-quality](../gate-frontend-quality/SKILL.md) |
 
-4. **Layer boundaries.** Infer the intended dependency direction before enforcing it. Typical boundaries keep services independent of UI, shared utilities free of domain-specific behavior, design-system components independent of application state and API calls, production code free of test mocks, and routing focused on route-to-page mapping. Check framework conventions before applying these examples. Use the existing boundary tool or a suitable one, such as dependency-cruiser or ESLint boundaries. Diagnostics should explain the reason and where the dependency belongs.
-
-5. **Rules backed by evidence.** Add a custom rule only for a demonstrated recurring mistake or a concrete incident. Capture the rationale and corrective action, and test both violations and legitimate cases. For example, double rounding may justify keeping calculation precision in services and rounding only at presentation boundaries; it does not justify a global ban on rounding.
-
-6. **Guidance during generation.** Keep important project constraints in the agent's project rules and relevant skills. Where the project supports it, use changed-file lint feedback in the working loop. Written guidance reduces mistakes but does not replace executable checks. Treat aggregate diagnostics as clues, never objectives to optimize.
-
-7. **Tests that detect broken behavior.** Inspect assertions for observable outcomes, meaningful arguments, boundary conditions, and independently derived expectations. Flag unchecked snapshots, shape-only assertions that miss wrong content, tests that repeat implementation logic, and assertions against the mock instead of the code under test. Use mutation testing, such as Stryker, selectively on important or changed logic when useful. Investigate surviving mutants, including equivalent ones; do not add a mutation-score threshold or meaningless tests merely to improve a number. Scope runs to control cost.
-
-8. **Dead code and stale mocks.** Use an existing detector or Knip to identify unused files, exports, and dependencies. Review ignored paths and verify entry points, dynamic imports, framework discovery, generated files, and public exports before deleting anything. Check mock paths and factory exports against real modules, accounting for partial mocks. Add a repository-specific reachability or mock detector only for a demonstrated gap. Test custom detectors with known positive and negative fixtures, including aliases and a deliberately unreachable file.
-
-9. **Duplicate logic.** Search for both textual and semantic copies of business rules. jscpd can help with textual duplication but cannot prove semantic uniqueness. Treat repeated markup, fixtures, and business logic differently. Consolidate when copies represent the same rule and could diverge; do not create premature abstractions just to remove similar-looking JSX.
-
-10. **CI enforcement.** For settled checks, provide separately visible formatting/lint, typecheck, unit-test, and build results, with appropriately scoped mutation analysis where adopted. Required checks should gate merging and deployment; a workflow alone does not configure branch protection. Mutation analysis should fail for execution errors when appropriate, not an arbitrary score. Report external branch-protection or deployment settings still needed rather than claiming local configuration enforces them.
+Skip only concerns that do not apply to the target stack or scope, and explain those exclusions. Deduplicate overlapping findings and recommendations. Prefer a trustworthy API contract, meaningful behavioral tests, and enforcement of adopted checks when resources are limited. Do not install every example tool.
 
 ## Roll out proportionately
 

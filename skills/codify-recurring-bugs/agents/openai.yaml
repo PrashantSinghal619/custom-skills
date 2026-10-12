@@ -1,0 +1,4 @@
+interface:
+  display_name: "codify-recurring-bugs"
+  short_description: "Codify recurring bugs in frontend projects"
+  default_prompt: "Use $codify-recurring-bugs to review this concern in the requested frontend scope."

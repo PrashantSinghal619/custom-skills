@@ -1,0 +1,4 @@
+interface:
+  display_name: "enforce-layer-boundaries"
+  short_description: "Enforce layer boundaries in frontend projects"
+  default_prompt: "Use $enforce-layer-boundaries to review this concern in the requested frontend scope."

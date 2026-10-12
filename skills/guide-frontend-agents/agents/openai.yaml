@@ -1,0 +1,4 @@
+interface:
+  display_name: "guide-frontend-agents"
+  short_description: "Guide frontend agents in frontend projects"
+  default_prompt: "Use $guide-frontend-agents to review this concern in the requested frontend scope."

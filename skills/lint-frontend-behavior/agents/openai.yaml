@@ -1,0 +1,4 @@
+interface:
+  display_name: "lint-frontend-behavior"
+  short_description: "Lint frontend behavior in frontend projects"
+  default_prompt: "Use $lint-frontend-behavior to review this concern in the requested frontend scope."

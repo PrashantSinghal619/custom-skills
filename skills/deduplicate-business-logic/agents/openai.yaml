@@ -1,0 +1,4 @@
+interface:
+  display_name: "deduplicate-business-logic"
+  short_description: "Deduplicate business logic in frontend projects"
+  default_prompt: "Use $deduplicate-business-logic to review this concern in the requested frontend scope."
